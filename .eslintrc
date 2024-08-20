@@ -1,0 +1,154 @@
+// 参考: https://zhuanlan.zhihu.com/p/644499564
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "vue/setup-compiler-macros": true,
+  },
+  "extends": [
+    "plugin:vue/essential",
+    "plugin:vue/vue3-essential",
+    "prettier",
+    "@unocss",
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module",
+  },
+  "plugins": ["vue", "@typescript-eslint"],
+  "rules": {
+    // "no-console": "error",
+    // "no-debugger": "error",
+    // 已声明 但从未读取其值
+    "@typescript-eslint/no-unused-vars": "error",
+    // 关闭eslint检查文件名是否为驼峰命名
+    "vue/multi-word-component-names": "off",
+    "vue/no-v-model-argument": "off",
+    // 会冲突，所以禁用
+    "vue/singleline-html-element-content-newline": "off",
+    "vue/component-tags-order": [
+      "error",
+      {
+        "order": ["style", "template", "script"],
+      },
+    ],
+    "vue/html-self-closing": [
+      "error",
+      {
+        "html": {
+          "void": "always",
+          "normal": "always",
+          "component": "always",
+        },
+        "svg": "always",
+        "math": "always",
+      },
+    ],
+    "@unocss/blocklist": "warn",
+    "@unocss/order": "error",
+    "@unocss/order-attributify": "error",
+    // 不允许在组件定义中使用保留名称
+    "vue/no-reserved-component-names": "off",
+    // vue3 可以有多个模板根节点
+    "vue/no-multiple-template-root": "off",
+    // @click="toggleClick" 方法在无惨的情况下不可加()
+    "vue/v-on-function-call": ["error", "never"],
+    // script标签和代码之间的缩进
+    // "vue/script-indent": ["error", 2, { "baseIndent": 1 }],
+    // 不准使用var声明变量
+    "no-var": "error",
+    // 要求变量声明使用const的，而不是let和var如果可能的话。如果一个变量只有在声明时才被赋值一次，那么应该使用'const'
+    "prefer-const": [
+      "error",
+      {
+        "destructuring": "any",
+        "ignoreReadBeforeAssign": false,
+      },
+    ],
+    //  禁止使用new  创建新对象
+    "no-new-object": "error",
+    // 禁止出现空函数
+    "no-empty-function": ["error"],
+    // 禁止使用new 创建function
+    "no-new-func": "error",
+    // 禁止使用new 创建数组
+    "no-array-constructor": "error",
+    // 对象字面中定义的所有方法（包括生成器）和任何属性，其中的键名与分配的变量名相匹配。
+    "object-shorthand": ["error", "always"],
+    // 数组回调必须有返回值
+    "array-callback-return": "error",
+    // 使用模板字面量
+    "prefer-template": "error",
+    // ${和} 在模板字符串中嵌入表达式 不准有空格
+    "template-curly-spacing": ["error", "never"],
+    // 数组和对象必须使用结构赋值
+    "prefer-destructuring": [
+      "error",
+      {
+        "array": true,
+        "object": true,
+      },
+      {
+        "enforceForRenamedProperties": false,
+      },
+    ],
+    // 禁止使用eval函数
+    "no-eval": "error",
+    // 不要使用不必要的转义字符。
+    "no-useless-escape": "error",
+    // 用命名函数表达式而不是函数声明
+    "func-style": ["error", "expression"],
+    // 把立即执行函数包裹在圆括号里
+    "wrap-iife": ["error", "any"],
+    // 不要在非函数块（if、while等等）内声明函数。而是把这个函数分配给一个变量。浏览器会允许你这样做，但浏览器解析方式不同，结果也许会有差异。
+    "no-loop-func": "error",
+    // 优先使用rest语法...，而不是 arguments
+    "prefer-rest-params": "error",
+    // 永远不要改参数
+    "no-param-reassign": "error",
+    // 使用 ... 展开符
+    "prefer-spread": "error",
+    //  如果要用匿名函数做回调，使用箭头函数
+    "prefer-arrow-callback": "error",
+    // 如果函数体由一个没有副作用的表达式的单个语句组成，去掉大括号和 return。否则，保留大括号且使用 return 语句
+    "arrow-body-style": ["error", "always"],
+    // 避免箭头函数语法 => 和比较操作符 <=, >= 混淆
+    "no-confusing-arrow": "error",
+    // 使用隐式返回时强制约束函数体在箭头后面
+    "implicit-arrow-linebreak": ["error", "beside"],
+    // 如果没有特殊说明，类有默认的构造方法。不用特意写一个空的构造函数或只是代表父类的构造函数
+    "no-useless-constructor": "error",
+    // 避免重复类的成员
+    "no-dupe-class-members": "error",
+    // 一个入口只 import 一次
+    "no-duplicate-imports": "error",
+    // 使用全等
+    "eqeqeq": "error",
+    // 三元表达式不应该嵌套，通常是单行表达式
+    "no-nested-ternary": "error",
+    // 当存在更简单的选择时，这条规则不允许三元运算符。
+    "no-unneeded-ternary": "error",
+    // 当在一个表达式中连续使用不同的运算符而没有括号时，这条规则会发出警告。
+    "no-mixed-operators": "error",
+    // 不允许在单行语句前添加换行。
+    "nonblock-statement-body-position": ["error", "beside"],
+    // 大括号执行 one true brace 风格
+    "brace-style": "error",
+    // 不允许在返回后有 else if 块
+    "no-else-return": ["error", { "allowElseIf": false }],
+    // 所有的注释前加一个空格方便阅读
+    "spaced-comment": ["error", "always"],
+    // 在声明开头执行强制类型转换。
+    "no-new-wrappers": "error",
+    "no-undef": "error",
+  },
+  "overrides": [
+    {
+      "files": ["views/**/*.vue", "layouts/**/*.vue"],
+      "rules": {
+        "vue/multi-word-component-names": "off",
+      },
+    },
+  ],
+}
